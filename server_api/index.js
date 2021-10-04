@@ -14,7 +14,9 @@ mongoose
     })
     .then(() => console.log("Database Connection Successful!"));
 
-app.use("/api/user", userRouter)
+app.use(express.json())
+
+app.use("/api/users", userRouter)
 
 app.listen(process.env.PORT || 5000, () => {
     console.log("Backend server is running!");
