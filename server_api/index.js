@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 
 const userRouter = require('./routes/userR')
 const authRouter = require('./routes/auth')
+const productRouter = require('./routes/productR')
 
 mongoose
     .connect(process.env.DB, {
@@ -19,6 +20,7 @@ app.use(express.json())
 
 app.use("/api/users", userRouter)
 app.use("/api/auth", authRouter)
+app.use("/api/product", productRouter)
 
 app.listen(process.env.PORT || 5000, () => {
     console.log("Backend server is running!");
