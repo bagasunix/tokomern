@@ -6,7 +6,6 @@
     <p align="center">
 <a href="https://www.npmjs.com/package/express" target="_blank"><img src="https://img.shields.io/npm/v/npm?style=plastic" alt="NPM Version" /></a>
 <a href="https://www.mongodb.com" target="_blank"><img src="https://img.shields.io/badge/Database-MongoDB-green?style=flat?&amp;logo=mongodb&amp;logoColor=green" style="max-width:100%;"></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/express/master" alt="CircleCI" /></a>
 </p>
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
