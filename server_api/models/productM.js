@@ -12,7 +12,7 @@ const productSchema = new Mongoose.Schema({
         unique: true
     },
     img: {
-        type: Sting,
+        type: String,
         required: true
     },
     categories: {
