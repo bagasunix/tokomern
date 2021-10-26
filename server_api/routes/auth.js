@@ -2,6 +2,7 @@ const router = require('express').Router()
 const { request } = require('express')
 const user = require('../models/userM')
 const cryptoJs = require('crypto-js')
+const userM = require('../models/userM')
 
 // Register
 router.post('/register', async (req, res) => {
@@ -19,12 +20,41 @@ router.post('/register', async (req, res) => {
             savedUser
         })
     } catch (err) {
-        console.log(err);
         res.status(500).json({
             status: 'Error',
             err
         })
     }
 
+})
+
+// Login
+
+router.post('/login', async (req, res) => {
+    try {
+        const user = await userM.findOne({ username: req.body.username })
+        !user && res.status(401).json({
+            status: 'Error',
+            message: 'Wrong credentials!'
+        })
+        const hashPass = cryptoJs.AES.decrypt(user.password, process.env.PASS_SEC)
+        const Originalpassword = hashPass.toString(cryptoJs.enc.Utf8)
+        Originalpassword !== req.body.password && res.status(401).json({
+            status: 'Error',
+            message: 'Wrong credentials!'
+        })
+
+        const { password, __v, ...others } = user._doc
+
+        return res.status(200).json({
+            status: 'success',
+            others
+        })
+    } catch (err) {
+        res.status(500).json({
+            status: 'Error',
+            err
+        })
+    }
 })
 module.exports = router
