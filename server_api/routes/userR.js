@@ -45,16 +45,30 @@ router.get('/find/:id', verufyTokenAndAdmin, async (req, res) => {
     }
 })
 
-// Get Me
+// Get Profile
 router.get('/profile', verifyToken, async (req, res) => {
     try {
         const userMe = await userM.findById(req.user.id)
-        console.log(userMe);
         const { password, __v, ...others } = userMe._doc
 
         return res.status(200).json({
             status: 'success',
             data: others
+        })
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+// Get All User
+router.get('/', verufyTokenAndAdmin, async (req, res) => {
+    const query = req.query.new;
+    try {
+        const users = query ? await userM.find().sort({ _id: -1 }).limit(10) : await userM.find()
+
+        return res.status(200).json({
+            status: 'success',
+            data: users
         })
     } catch (err) {
         res.status(500).json(err)
