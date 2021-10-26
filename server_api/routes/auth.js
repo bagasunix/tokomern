@@ -3,6 +3,7 @@ const { request } = require('express')
 const user = require('../models/userM')
 const cryptoJs = require('crypto-js')
 const userM = require('../models/userM')
+const jwt = require('jsonwebtoken')
 
 // Register
 router.post('/register', async (req, res) => {
@@ -44,11 +45,17 @@ router.post('/login', async (req, res) => {
             message: 'Wrong credentials!'
         })
 
+        const accessToken = jwt.sign({
+            id: user._id, isAdmin: user.isAdmin,
+
+        }, process.env.JWT_SEC_KEY, { expiresIn: '3d' })
+
         const { password, __v, ...others } = user._doc
 
         return res.status(200).json({
             status: 'success',
-            others
+            ...others,
+            accessToken
         })
     } catch (err) {
         res.status(500).json({
