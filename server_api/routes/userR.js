@@ -45,4 +45,20 @@ router.get('/find/:id', verufyTokenAndAdmin, async (req, res) => {
     }
 })
 
+// Get Me
+router.get('/profile', verifyToken, async (req, res) => {
+    try {
+        const userMe = await userM.findById(req.user.id)
+        console.log(userMe);
+        const { password, __v, ...others } = userMe._doc
+
+        return res.status(200).json({
+            status: 'success',
+            data: others
+        })
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
 module.exports = router
