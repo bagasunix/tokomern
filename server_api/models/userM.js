@@ -12,7 +12,7 @@ const userSchema = new Mongoose.Schema({
         unique: true
     },
     password: {
-        type: Sting,
+        type: String,
         required: true
     },
     isAdmin: {
