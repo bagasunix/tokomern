@@ -8,6 +8,9 @@ const authRouter = require('./routes/auth')
 const productRouter = require('./routes/productR')
 const cartRouter = require('./routes/cartR')
 const orderRouter = require('./routes/orderR')
+const stripeRouter = require('./routes/stripe')
+
+const cors = require('cors')
 
 mongoose
     .connect(process.env.DB, {
@@ -18,6 +21,7 @@ mongoose
     })
     .then(() => console.log("Database Connection Successful!"));
 
+app.use(cors())
 app.use(express.json())
 
 app.use("/api/users", userRouter)
@@ -25,6 +29,7 @@ app.use("/api/auth", authRouter)
 app.use("/api/products", productRouter)
 app.use("/api/carts", cartRouter)
 app.use("/api/orders", orderRouter)
+app.use("/api/checkout", stripeRouter)
 
 app.listen(process.env.PORT || 5000, () => {
     console.log("Backend server is running!");
