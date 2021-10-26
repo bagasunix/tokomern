@@ -36,50 +36,34 @@ router.delete('/:id', verufyTokenAndAdmin, async (req, res) => {
     }
 })
 
-// Get User Me
-// router.get('/find/:id', verufyTokenAndAdmin, async (req, res) => {
-//     try {
-//         const userMe = await userM.findById(req.params.id)
-//         const { password, __v, ...others } = userMe._doc
+// Get Details Product
+router.get('/find/:id', verufyTokenAndAdmin, async (req, res) => {
+    try {
+        const detailProduct = await productM.findById(req.params.id)
 
-//         return res.status(200).json({
-//             status: 'success',
-//             data: others
-//         })
-//     } catch (err) {
-//         res.status(500).json(err)
-//     }
-// })
+        return res.status(200).json({
+            detailProduct
+        })
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
 
-// Get Profile
-// router.get('/profile', verifyToken, async (req, res) => {
-//     try {
-//         const userMe = await userM.findById(req.user.id)
-//         const { password, __v, ...others } = userMe._doc
-
-//         return res.status(200).json({
-//             status: 'success',
-//             data: others
-//         })
-//     } catch (err) {
-//         res.status(500).json(err)
-//     }
-// })
 
 // Get All User
-// router.get('/', verufyTokenAndAdmin, async (req, res) => {
-//     const query = req.query.new;
-//     try {
-//         const users = query ? await userM.find().sort({ _id: -1 }).limit(10) : await userM.find()
+router.get('/', verufyTokenAndAdmin, async (req, res) => {
+    const query = req.query.new;
+    try {
+        const users = query ? await productM.find().sort({ _id: -1 }).limit(10) : await productM.find()
 
-//         return res.status(200).json({
-//             status: 'success',
-//             data: users
-//         })
-//     } catch (err) {
-//         res.status(500).json(err)
-//     }
-// })
+        return res.status(200).json({
+            status: 'success',
+            data: users
+        })
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
 
 // Get User Stat
 // router.get('/stats', verufyTokenAndAdmin, async (req, res) => {
