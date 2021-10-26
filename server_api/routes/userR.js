@@ -75,4 +75,33 @@ router.get('/', verufyTokenAndAdmin, async (req, res) => {
     }
 })
 
+// Get User Stat
+router.get('/stats', verufyTokenAndAdmin, async (req, res) => {
+    const date = new Date()
+    const lastYear = new Date(date.setFullYear(date.getFullYear() - 1))
+    console.log(date, lastYear);
+    try {
+        const data = await userM.aggregate([
+            { $match: { createdAt: { $gte: lastYear } } },
+            {
+                $project: {
+                    month: { $month: "$createdAt" }
+                }
+            },
+            {
+                $group: {
+                    _id: "$month",
+                    total: { $sum: 1 }
+                }
+            }
+        ])
+        return res.status(200).json({
+            status: 'success',
+            data
+        })
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
 module.exports = router
