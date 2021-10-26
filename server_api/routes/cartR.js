@@ -30,7 +30,7 @@ router.put('/:id', verufyTokenAndAuthorization, async (req, res) => {
 router.delete('/:id', verufyTokenAndAuthorization, async (req, res) => {
     try {
         await cartM.findByIdAndDelete(req.params.id)
-        res.status(200).json('Product has been delete...')
+        res.status(200).json('Cart has been delete...')
     } catch (err) {
         res.status(500).json(err)
     }
