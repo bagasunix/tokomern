@@ -31,6 +31,10 @@ const productSchema = new Mongoose.Schema({
         type: Number,
         required: true
     },
+    inStock: {
+        type: Boolean,
+        default: true
+    }
 }, { timestamps: true });
 
 module.exports = Mongoose.model("Product", productSchema)
