@@ -1,6 +1,7 @@
-import { KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons'
-import React from 'react'
+import {  KeyboardArrowLeft, KeyboardArrowRight } from '@material-ui/icons'
+import { useState, React } from 'react'
 import styled from 'styled-components'
+import {sliderItems} from '../data'
 
 const Container = styled.div`
   width: 100%;
@@ -27,6 +28,7 @@ const Arrow = styled.div`
   margin: auto;
   cursor: pointer;
   opacity: 0.5;
+  z-index: 2;
 `;
 
 const Wrapper = styled.div`
@@ -76,24 +78,34 @@ const Button = styled.button`
   cursor: pointer;
 `;
 export const Slider = () => {
+    const [slideIndex, setSlideIndex] = useState(0)
+    const handleClick = (direction) => {
+        if (direction === 'left') {
+            setSlideIndex(slideIndex > 0 ? slideIndex-1 : 2 )
+        } else {
+            setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0)
+        }
+    }
     return (
         <Container>
-            <Arrow direction='left'>
+            <Arrow direction='left' onClick={()=>handleClick('left')}>
                 <KeyboardArrowLeft/>
             </Arrow>
-            <Wrapper>
-                <Slide>
+            <Wrapper slideIndex={slideIndex}>
+                {sliderItems.map((item) => (
+                <Slide bg='f5fafd'>
                     <ImgContainer>
-                        <Image src="https://images.pexels.com/photos/6311248/pexels-photo-6311248.jpeg"/>
+                        <Image src={item.img}/>
                     </ImgContainer>
                     <InfoContainer>
-                        <Title>Summer Sall</Title>
-                        <Desc>Don't Compromise on style! Get flat 30% off for new arrivals</Desc>
+                        <Title>{item.title}</Title>
+                        <Desc>{item.desc}</Desc>
                         <Button>Show Now</Button>
                     </InfoContainer>
                 </Slide>
+                ))}
             </Wrapper>
-            <Arrow direction='right'>
+            <Arrow direction='right' onClick={()=>handleClick('right')}>
                 <KeyboardArrowRight/>
             </Arrow>
         </Container>
