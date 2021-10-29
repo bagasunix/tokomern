@@ -11,9 +11,15 @@ const App = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/products/:category" component={ProductList}/>
-                <Route path="/cart" component={Cart}/>
-                <Route path="/product/:id" component={Product}/>
+                <Route path="/products/:category">
+                    <ProductList/>
+                </Route>
+                <Route path="/cart">
+                    <Cart/>
+                </Route>
+                <Route path="/product/:id">
+                    <Product/>
+                </Route>
                 <Route path="/login">
                     {user ? <Redirect path="/"/> : <Login/>}
                     <Login />
