@@ -71,14 +71,14 @@ export const Navbar = () => {
     <Container>
       <Wrapper>
         <Left>
-          <Language>EN</Language>
+          <Language>IDN</Language>
           <SearchContainer>
             <Input placeholder="Search" />
             <Search style={{ color: "gray", fontSize: 16 }} />
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>LAMA.</Logo>
+          <Logo>TOKO MEUREUN.</Logo>
         </Center>
         <Right>
           <MenuItem>REGISTER</MenuItem>
