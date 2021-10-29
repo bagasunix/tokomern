@@ -1,6 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
-import { mobile } from '../responsive';
+import styled from "styled-components";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
   width: 100vw;
@@ -54,9 +53,10 @@ const Button = styled.button`
   color: white;
   cursor: pointer;
 `;
-export const Register = () => {
-    return (
-        <Container>
+
+const Register = () => {
+  return (
+    <Container>
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
         <Form>
@@ -74,5 +74,7 @@ export const Register = () => {
         </Form>
       </Wrapper>
     </Container>
-    )
-}
+  );
+};
+
+export default Register;

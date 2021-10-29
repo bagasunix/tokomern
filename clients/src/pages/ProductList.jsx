@@ -1,11 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import {Announcement} from '../components/Announcement'
-import {Footer} from '../components/Footer';
-import {Navbar} from '../components/Navbar'
-import {Newsletter} from '../components/Newsletter';
-import { Products } from '../components/Products';
-import { mobile } from '../responsive';
+import styled from "styled-components";
+import {Navbar} from "../components/Navbar";
+import {Announcement} from "../components/Announcement";
+import {Products} from "../components/Products";
+import {Newsletter} from "../components/Newsletter";
+import {Footer} from "../components/Footer";
+import { mobile } from "../responsive";
 
 const Container = styled.div``;
 
@@ -37,13 +36,13 @@ const Select = styled.select`
 `;
 const Option = styled.option``;
 
-export default function ProductList() {
-    return (
-        <Container>
-            <Navbar />
-            <Announcement />
-            <Title>Dresses</Title>
-            <FilterContainer>
+export const ProductList = () => {
+  return (
+    <Container>
+      <Navbar />
+      <Announcement />
+      <Title>Dresses</Title>
+      <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
           <Select>
@@ -77,9 +76,9 @@ export default function ProductList() {
           </Select>
         </Filter>
       </FilterContainer>
-            <Products />
-            <Newsletter />
-            <Footer />
-        </Container>
-    )
-}
+      <Products />
+      <Newsletter />
+      <Footer />
+    </Container>
+  );
+};

@@ -1,11 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Announcement } from '../components/Announcement'
-import { Footer } from '../components/Footer'
-import { Navbar } from '../components/Navbar'
-import { Newsletter } from '../components/Newsletter'
 import { Add, Remove } from "@material-ui/icons";
-import { mobile } from '../responsive'
+import styled from "styled-components";
+import {Announcement} from "../components/Announcement";
+import {Footer} from "../components/Footer";
+import {Navbar} from "../components/Navbar";
+import {Newsletter} from "../components/Newsletter";
+import { mobile } from "../responsive";
 
 const Container = styled.div``;
 
@@ -110,14 +109,15 @@ const Button = styled.button`
   background-color: white;
   cursor: pointer;
   font-weight: 500;
-  border-radius: 30px;
+
   &:hover{
       background-color: #f8f4f4;
   }
 `;
+
 const Product = () => {
-    return (
-        <Container>
+  return (
+    <Container>
       <Navbar />
       <Announcement />
       <Wrapper>
@@ -165,7 +165,7 @@ const Product = () => {
       <Newsletter />
       <Footer />
     </Container>
-    )
-}
+  );
+};
 
-export default Product
+export default Product;

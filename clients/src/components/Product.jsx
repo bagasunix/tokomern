@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   FavoriteBorderOutlined,
   SearchOutlined,
@@ -32,6 +31,7 @@ const Container = styled.div`
   justify-content: center;
   background-color: #f5fbfd;
   position: relative;
+
   &:hover ${Info}{
     opacity: 1;
   }

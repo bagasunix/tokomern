@@ -7,9 +7,8 @@ import {
   Room,
   Twitter,
 } from "@material-ui/icons";
-import React from 'react'
-import styled from 'styled-components'
-import { mobile } from '../responsive';
+import styled from "styled-components";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
   display: flex;
@@ -72,6 +71,7 @@ const Right = styled.div`
   flex: 1;
   padding: 20px;
   ${mobile({ backgroundColor: "#fff8f8" })}
+
 `;
 
 const ContactItem = styled.div`
@@ -85,8 +85,8 @@ const Payment = styled.img`
 `;
 
 export const Footer = () => {
-    return (
-         <Container>
+  return (
+    <Container>
       <Left>
         <Logo>LAMA.</Logo>
         <Desc>
@@ -138,5 +138,5 @@ export const Footer = () => {
         <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
       </Right>
     </Container>
-    )
-}
+  );
+};
