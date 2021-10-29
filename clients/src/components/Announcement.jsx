@@ -17,5 +17,3 @@ export const Announcement = () => {
         </Container>
     )
 }
-
-export default Announcement

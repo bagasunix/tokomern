@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   FavoriteBorderOutlined,
   SearchOutlined,
@@ -65,7 +66,7 @@ const Icon = styled.div`
   }
 `;
 
-const Product = ({ item }) => {
+export const Product = ({ item }) => {
   return (
     <Container>
       <Circle />
@@ -84,5 +85,3 @@ const Product = ({ item }) => {
     </Container>
   );
 };
-
-export default Product;
