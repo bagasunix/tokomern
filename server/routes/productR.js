@@ -51,29 +51,28 @@ router.get('/find/:id', verufyTokenAndAdmin, async (req, res) => {
 
 
 // Get All User
-router.get('/', async (req, res) => {
+//GET ALL PRODUCTS
+router.get("/", async (req, res) => {
     const qNew = req.query.new;
-    const qcategory = req.query.category;
+    const qCategory = req.query.category;
     try {
         let products;
+
         if (qNew) {
-            products = await productM.find().sort({ createdAt: -1 }).limit(10)
-        } else if (qcategory) {
+            products = await productM.find().sort({ createdAt: -1 }).limit(1);
+        } else if (qCategory) {
             products = await productM.find({
                 categories: {
-                    $in: [qcategory]
-                }
+                    $in: [qCategory],
+                },
             });
         } else {
-            products = await productM.find()
+            products = await productM.find();
         }
-        return res.status(200).json({
-            status: 'success',
-            data: products
-        })
+        res.status(200).json(products);
     } catch (err) {
-        res.status(500).json(err)
+        res.status(500).json(err);
     }
-})
+});
 
 module.exports = router
